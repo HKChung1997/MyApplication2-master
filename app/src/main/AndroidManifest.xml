@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.chung.myapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Home" />
+        <activity android:name=".Forgot" />
+        <activity android:name=".QR_Code" />
+        <activity android:name=".Home2" />
+        <activity android:name=".Parent_homwork" />
+        <activity android:name=".Parent_attend" />
+        <activity android:name=".Parent_handbook" />
+        <activity android:name=".Parent_notice" />
+        <activity android:name=".Parent_notification" />
+        <activity android:name=".Parent_contact" />
+        <activity android:name=".Teacher_homework" />
+        <activity android:name=".Teacher_attend" />
+        <activity android:name=".Teacher_message"></activity>
+    </application>
+
+</manifest>
