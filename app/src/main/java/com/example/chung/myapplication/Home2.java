@@ -30,7 +30,6 @@ public class Home2 extends AppCompatActivity {
         Button btnPHandbook = (Button) findViewById(R.id.bPHandbook);
         Button btnPHomework = (Button) findViewById(R.id.bPHomework);
         Button btnPNotice = (Button) findViewById(R.id.bPNotice);
-        Button btnPNotification = (Button) findViewById(R.id.bPNotification);
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
         final String username = intent.getStringExtra("username");
@@ -62,6 +61,8 @@ public class Home2 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent ();
                 intent.setClass(Home2.this, Parent_handbook.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 Home2.this.startActivity(intent);
             }
         });
@@ -70,6 +71,8 @@ public class Home2 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent ();
                 intent.setClass(Home2.this, Parent_homwork.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 Home2.this.startActivity(intent);
             }
         });
@@ -78,16 +81,18 @@ public class Home2 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent ();
                 intent.setClass(Home2.this, Parent_notice.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 Home2.this.startActivity(intent);
             }
         });
-        btnPNotification.setOnClickListener(new View.OnClickListener(){
+        /*btnPNotification.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
                 intent.setClass(Home2.this, Parent_notification.class);
                 Home2.this.startActivity(intent);
             }
-        });
+        });*/
     }
 }

@@ -31,7 +31,8 @@
         <activity android:name=".Parent_contact" />
         <activity android:name=".Teacher_homework" />
         <activity android:name=".Teacher_attend" />
-        <activity android:name=".Teacher_message"></activity>
+        <activity android:name=".Teacher_message" />
+        <activity android:name=".Parent_eventAttend"></activity>
     </application>
 
 </manifest>

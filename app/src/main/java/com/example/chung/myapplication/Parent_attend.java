@@ -5,12 +5,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -28,23 +30,28 @@ public class Parent_attend extends AppCompatActivity {
     private String TAG = Parent_attend.class.getSimpleName();
     private ProgressDialog pDialog;
     private ListView lv;
+    private String username;
+    private String password;
+    private String url;
     //final TextView username = (TextView)findViewById(R.id.test);
     //final TextView password = (TextView)findViewById(R.id.test2);
     // URL to get contacts JSON
     ArrayList<HashMap<String, String>> contactList;
     //String username = getIntent().getExtras().getString("test").toString();
    // String password = getIntent().getExtras().getString("test2").toString();
-    Intent intent = getIntent();
-    String str = intent.getStringExtra("username");
-    String str2 = intent.getStringExtra("password");
-    String url = "https://lenchan139.org/myWorks/fyp/android/attendDetails.php?"+"username="+str+"password="+str2;
     //username.setText(str);
     //password.setText(str2);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_attend);
+        Button btnEvent = (Button)findViewById(R.id.btEvent);
         contactList = new ArrayList<>();
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
+        password= intent.getStringExtra("password");
+        url = "https://lenchan139.org/myWorks/fyp/android/attendDetails.php?"+"username="+username+"&password="+password;
+
         //Intent intent = getIntent();
         //final String str = intent.getStringExtra("test");
         //final String str2 = intent.getStringExtra("test2");
@@ -52,7 +59,18 @@ public class Parent_attend extends AppCompatActivity {
         //password.setText(str2);
         lv = (ListView) findViewById(R.id.attenList);
         new GetContacts().execute();
+        btnEvent.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent ();
+                intent.setClass(Parent_attend.this, Parent_eventAttend.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
+                Parent_attend.this.startActivity(intent);
+            }
+        });
     }
+
     /**
      * Async task class to get json by making HTTP call
      */

@@ -46,13 +46,17 @@ public class Parent_handbook extends AppCompatActivity {
     private ListView lv;
     // URL to get contacts JSON
     ArrayList<HashMap<String, String>> contactList;
-    String url = "https://lenchan139.org/myWorks/fyp/android/ruleList.php?username=parentX&password=pw";
-
+    private String username;
+    private String password;
+    private String url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_handbook);
-
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
+        password= intent.getStringExtra("password");
+        url = "https://lenchan139.org/myWorks/fyp/android/ruleList.php?"+"username="+username+"&password="+password;
 
         contactList = new ArrayList<>();
 

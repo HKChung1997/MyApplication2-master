@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
                             String username = jsonResponse.getString("username");
                             String type = jsonResponse.getString("type");
                             String parent = new String("parent");
-                            String officer = new String("officer");
-                            if (success && type.equals(officer)) {
+                            String staff = new String("staff");
+                            if (success && type.equals(staff)) {
                                 Intent intent = new Intent(MainActivity.this, Home.class);
                                 intent.putExtra("type", type);
                                 intent.putExtra("password", password);
