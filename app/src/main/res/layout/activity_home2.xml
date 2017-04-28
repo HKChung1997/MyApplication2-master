@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:text="You are login as : "
-        android:gravity="right"/>
+        android:gravity="left"/>
     <TextView
         android:layout_width="0dp"
         android:layout_weight="50"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:text="Version : "
-            android:gravity="right"/>
+            android:gravity="left"/>
         <TextView
             android:layout_width="0dp"
             android:layout_weight="50"
@@ -42,6 +42,24 @@
             android:textSize="20dp"
             android:text=""
             android:gravity="left"/>></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="User ID : "
+            android:gravity="left"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvId"
+            android:textSize="20dp"
+            android:text=""
+            android:gravity="left"/></LinearLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,16 +85,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/bPContact"
         android:text="Contact teacher" />
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="asddsaadsadsasd"
-        android:textSize="20dp"
-        android:id="@+id/test"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="asdsadsadsadsa"
-        android:textSize="20dp"
-        android:id="@+id/test2"/>
+        android:id="@+id/bPNotification"
+        android:text="Notification" />
 </LinearLayout>

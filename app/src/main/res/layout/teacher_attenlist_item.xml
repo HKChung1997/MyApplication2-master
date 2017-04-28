@@ -3,7 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         android:gravity="right"
         android:layout_width="fill_parent"
@@ -14,16 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="Class : "
+            android:text="Student ID : "
             android:layout_weight="50"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:id="@+id/tvClass" />
+            android:id="@+id/tvStudentId" />
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/studClass" /></LinearLayout>
+            android:id="@+id/studentId" /></LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

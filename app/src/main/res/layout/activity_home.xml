@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:text="You are login as : "
-            android:gravity="right"/>
+            android:gravity="left"/>
         <TextView
             android:layout_width="0dp"
             android:layout_weight="50"
@@ -34,12 +34,30 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:text="Version : "
-            android:gravity="right"/>
+            android:gravity="left"/>
         <TextView
             android:layout_width="0dp"
             android:layout_weight="50"
             android:layout_height="wrap_content"
             android:id="@+id/tvVersion"
+            android:textSize="20dp"
+            android:text=""
+            android:gravity="left"/></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="User ID : "
+            android:gravity="left"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvId"
             android:textSize="20dp"
             android:text=""
             android:gravity="left"/></LinearLayout>
@@ -56,12 +74,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bTHomework"
-        android:text="Homework" />
+        android:id="@+id/bHwAdd"
+        android:text="Homework Add" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bTMessage"
-        android:text="Message" />
+        android:id="@+id/bHwCHK"
+        android:text="Homework Check" />
 
 </LinearLayout>

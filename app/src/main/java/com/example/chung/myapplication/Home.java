@@ -16,20 +16,28 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         final TextView tvUsername = (TextView)findViewById(R.id.tvUsername);
         final TextView tvVersion = (TextView)findViewById(R.id.tvVersion);
+        final TextView tvId = (TextView)findViewById(R.id.tvId);
+        Button btnHWAdd = (Button)findViewById(R.id.bHwAdd) ;
+        Button btnHWCHK = (Button)findViewById(R.id.bHwCHK) ;
         Button btnQRintent = (Button) findViewById(R.id.bQRintent);
         Button btnTAttend = (Button) findViewById(R.id.bTAttend);
-        Button btnTMessage = (Button) findViewById(R.id.bTMessage);
-        Button btnTHomework = (Button) findViewById(R.id.bTHomework);
+        //Button btnTHomework = (Button) findViewById(R.id.bTHomework);
         Intent intent = getIntent();
+        Bundle bundle = this.getIntent().getExtras();
+        int userId = bundle.getInt("user_id");
         String type = intent.getStringExtra("type");
-        String username = intent.getStringExtra("username");
+        final String username = intent.getStringExtra("username");
+        final String password = intent.getStringExtra("password");
         tvUsername.setText(username);
         tvVersion.setText(type);
+        tvId.setText("" + userId);
         btnQRintent.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
-                intent.setClass(Home.this, QR_Code.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
+                intent.setClass(Home.this, Teacher_select_hwQR_code.class);
                 Home.this.startActivity(intent);
             }
         });
@@ -37,26 +45,48 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 intent.setClass(Home.this, Teacher_attend.class);
                 Home.this.startActivity(intent);
             }
         });
-        btnTMessage.setOnClickListener(new View.OnClickListener(){
+        btnHWAdd.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Home.this, Teacher_hw_add.class);
+                Home.this.startActivity(intent);
+            }
+        });
+        btnHWCHK.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Home.this, Teacher_hw_chk.class);
+                Home.this.startActivity(intent);
+            }
+        });
+        /*btnTMessage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 intent.setClass(Home.this, Teacher_message.class);
                 Home.this.startActivity(intent);
             }
-        });
-        btnTHomework.setOnClickListener(new View.OnClickListener(){
+        });*/
+        /*btnTHomework.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 intent.setClass(Home.this, Teacher_homework.class);
                 Home.this.startActivity(intent);
             }
-        });
+        });*/
     }
 
 }

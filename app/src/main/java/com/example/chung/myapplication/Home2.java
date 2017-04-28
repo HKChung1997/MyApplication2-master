@@ -23,21 +23,22 @@ public class Home2 extends AppCompatActivity {
         setContentView(R.layout.activity_home2);
         final TextView etUsername = (TextView)findViewById(R.id.tvUsername);
         final TextView etVersion = (TextView)findViewById(R.id.tvVersion);
-        final TextView test = (TextView)findViewById(R.id.test);
-        final TextView test2 = (TextView)findViewById(R.id.test2);
+        final TextView tvId = (TextView)findViewById(R.id.tvId);
         Button btnPAttend = (Button) findViewById(R.id.bPAttend);
         Button btnPContact = (Button) findViewById(R.id.bPContact);
         Button btnPHandbook = (Button) findViewById(R.id.bPHandbook);
         Button btnPHomework = (Button) findViewById(R.id.bPHomework);
         Button btnPNotice = (Button) findViewById(R.id.bPNotice);
+        Button btnPNotification = (Button) findViewById(R.id.bPNotification);
         Intent intent = getIntent();
+        Bundle bundle = this.getIntent().getExtras();
+        int userId = bundle.getInt("user_id");
         String type = intent.getStringExtra("type");
         final String username = intent.getStringExtra("username");
         final String password = intent.getStringExtra("password");
         etUsername.setText(username);
         etVersion.setText(type);
-        test.setText(username);
-        test2.setText(password);
+        tvId.setText("" + userId);
         btnPAttend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -52,6 +53,8 @@ public class Home2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 intent.setClass(Home2.this, Parent_contact.class);
                 Home2.this.startActivity(intent);
             }
@@ -60,7 +63,7 @@ public class Home2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
-                intent.setClass(Home2.this, Parent_handbook.class);
+                intent.setClass(Home2.this, dummy1.class);
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
                 Home2.this.startActivity(intent);
@@ -86,13 +89,15 @@ public class Home2 extends AppCompatActivity {
                 Home2.this.startActivity(intent);
             }
         });
-        /*btnPNotification.setOnClickListener(new View.OnClickListener(){
+        btnPNotification.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 intent.setClass(Home2.this, Parent_notification.class);
                 Home2.this.startActivity(intent);
             }
-        });*/
+        });
     }
 }

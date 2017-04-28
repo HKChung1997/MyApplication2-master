@@ -36,7 +36,7 @@ public class QR_Code extends Activity implements ZXingScannerView.ResultHandler 
         Log.w("handleResult", result.getText());
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Scan result");
-        builder.setMessage(result.getText());
+        builder.setMessage("Student ID = 1"+" Homework added");
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
 

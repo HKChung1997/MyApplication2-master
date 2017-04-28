@@ -8,7 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Login "
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -19,20 +19,58 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Home" />
+        <activity
+            android:name=".Home"
+            android:label="Staff Home Page" />
         <activity android:name=".Forgot" />
-        <activity android:name=".QR_Code" />
-        <activity android:name=".Home2" />
-        <activity android:name=".Parent_homwork" />
-        <activity android:name=".Parent_attend" />
-        <activity android:name=".Parent_handbook" />
-        <activity android:name=".Parent_notice" />
-        <activity android:name=".Parent_notification" />
-        <activity android:name=".Parent_contact" />
+        <activity
+            android:name=".QR_Code"
+            android:label="QR Code" />
+        <activity
+            android:name=".Home2"
+            android:label="Parent Home Page" />
+        <activity
+            android:name=".Parent_homwork"
+            android:label="Homework" />
+        <activity
+            android:name=".Parent_attend"
+            android:label="Attendance" />
+        <activity
+            android:name=".Parent_handbook"
+            android:label="Handbook" />
+        <activity
+            android:name=".Parent_notice"
+            android:label="Notice" />
+        <activity
+            android:name=".Parent_notification"
+            android:label="Notification" />
+        <activity
+            android:name=".Parent_contact"
+            android:label="Contact" />
         <activity android:name=".Teacher_homework" />
-        <activity android:name=".Teacher_attend" />
+        <activity
+            android:name=".Teacher_attend"
+            android:label="Attendance" />
         <activity android:name=".Teacher_message" />
-        <activity android:name=".Parent_eventAttend"></activity>
+        <activity
+            android:name=".Parent_eventAttend"
+            android:label="Event Attendance" />
+        <activity
+            android:name=".Teacher_select_qr_code"
+            android:label="QR Code" />
+        <activity
+            android:name=".Teacher_select_class_attend"
+            android:label="Attendance" />
+        <activity
+            android:name=".Teacher_select_hwQR_code"
+            android:label="QR Code" />
+        <activity
+            android:name=".dummy1"
+            android:label="Handbook" />
+        <activity android:name=".Teacher_hw_add"
+            android:label="Homework Add"/>
+        <activity android:name=".Teacher_hw_chk"
+            android:label="Homework Check"></activity>
     </application>
 
 </manifest>

@@ -26,17 +26,8 @@ public class MainActivity extends AppCompatActivity {
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
         Button btnLogin = (Button) findViewById(R.id.bLogin);
-        Button btnForgot = (Button) findViewById(R.id.bForget);
 
 
-        btnForgot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this , Forgot.class);
-                MainActivity.this.startActivity(intent);
-            }
-        });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,25 +38,35 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("isVaild");
+                            String loginCHK = jsonResponse.getString("isVaild");
+                            Integer userId = jsonResponse.getInt("user_id");
                             String username = jsonResponse.getString("username");
                             String type = jsonResponse.getString("type");
+                            String isSuccess = new String("true");
+                            String isFail = new String("false");
                             String parent = new String("parent");
                             String staff = new String("staff");
-                            if (success && type.equals(staff)) {
+                            if (loginCHK.equals(isSuccess) && type.equals(staff)) {
                                 Intent intent = new Intent(MainActivity.this, Home.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("user_id", userId);
+                                intent.putExtras(bundle);
                                 intent.putExtra("type", type);
                                 intent.putExtra("password", password);
                                 intent.putExtra("username", username);
                                 MainActivity.this.startActivity(intent);
-                            }  else if (success && type.equals(parent)){
-                                Intent intent2 = new Intent(MainActivity.this, Home2.class);
-                                intent2.putExtra("type", type);
-                                intent2.putExtra("username", username);
-                                intent2.putExtra("password", password);
-                                MainActivity.this.startActivity(intent2);
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
+                            }  else if (loginCHK.equals(isSuccess) && type.equals(parent)){
+                                Intent intent = new Intent(MainActivity.this, Home2.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("user_id", userId);
+                                intent.putExtras(bundle);
+                                intent.putExtra("type", type);
+                                intent.putExtra("username", username);
+                                intent.putExtra("password", password);
+                                MainActivity.this.startActivity(intent);
+                            } else if (loginCHK.equals(isFail)){
+                                Toast toast = Toast.makeText(MainActivity.this, "Login Fail", Toast.LENGTH_LONG);
+                                toast.show();
                             }
 
                         } catch (JSONException e) {

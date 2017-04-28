@@ -1,10 +1,31 @@
 package com.example.chung.myapplication;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -22,11 +43,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -39,29 +63,53 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Parent_contact extends AppCompatActivity {
+public class Teacher_select_class_attend extends AppCompatActivity {
 
     private String TAG = Parent_attend.class.getSimpleName();
     private ProgressDialog pDialog;
     private ListView lv;
-    // URL to get contacts JSON
-    ArrayList<HashMap<String, String>> contactList;
     private String username;
     private String password;
+    private String Class;
     private String url;
+    //Button Event = (Button)findViewById(R.id.btEvent);
+    //final TextView username = (TextView)findViewById(R.id.test);
+    //final TextView password = (TextView)findViewById(R.id.test2);
+    // URL to get contacts JSON
+    ArrayList<HashMap<String, String>> contactList;
+    //String username = getIntent().getExtras().getString("test").toString();
+    // String password = getIntent().getExtras().getString("test2").toString();
+    //username.setText(str);
+    //password.setText(str2);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parent_contact);
+        setContentView(R.layout.activity_teacher_select_class_attend);
+        contactList = new ArrayList<>();
         Intent intent = getIntent();
+        Class = intent.getStringExtra("selected");
         username = intent.getStringExtra("username");
         password= intent.getStringExtra("password");
-        url = "https://lenchan139.org/myWorks/fyp/android/staffContactList.php?"+"username="+username+"&password="+password;
-
-        contactList = new ArrayList<>();
-
-        lv = (ListView) findViewById(R.id.lvcontactList);
+        url = "https://lenchan139.org/myWorks/fyp/android/staff_only/attendDetails.php?"+"username="+username+"&password="+password+"&class="+Class;
+        TextView tvClass = (TextView)findViewById(R.id.tvClass);
+        tvClass.setText(Class);
+        //Intent intent = getIntent();
+        //final String str = intent.getStringExtra("test");
+        //final String str2 = intent.getStringExtra("test2");
+        //username.setText(str);
+        //password.setText(str2);
+        lv = (ListView) findViewById(R.id.classAttenList);
         new GetContacts().execute();
+        /*Event.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent ();
+                intent.setClass(Parent_eventAttend.this, Parent_handbook.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
+                Parent_eventAttend.this.startActivity(intent);
+            }
+        });*/
     }
 
     /**
@@ -73,7 +121,7 @@ public class Parent_contact extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(Parent_contact.this);
+            pDialog = new ProgressDialog(Teacher_select_class_attend.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -94,33 +142,30 @@ public class Parent_contact extends AppCompatActivity {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     // Getting JSON Array node
-                    JSONArray contacts = jsonObj.getJSONArray("homeworkList");
+                    JSONArray contacts = jsonObj.getJSONArray("studArray");
 
                     // looping through All Contacts
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
-
-                        String user_id = c.getString("user_id");
-                        String mail = c.getString("mail");
-                        String name = c.getString("staff_name");
-                        String tclass = c.getString("teaching_class");
+                        String student_Id = c.getString("student_id");
+                        String studName = c.getString("student_name");
                         // Phone node is JSON Object
-                        /*JSONArray date = c.getJSONArray("student_attend");
+                        JSONArray date = c.getJSONArray("student_attend");
                         for (int j = 0; j < date.length(); j++) {
                             JSONObject jsonObject = date.getJSONObject(j);
 
-                            String dates = jsonObject.getString("read_time");*/
-                        // tmp hash map for single contact
-                        HashMap<String, String> contact = new HashMap<>();
+                            String dates = jsonObject.getString("attend_date");
+                            // tmp hash map for single contact
+                            HashMap<String, String> contact = new HashMap<>();
 
-                        // adding each child node to HashMap key => value
-                        contact.put("staff_name", name);
-                        contact.put("teaching_class", tclass);
-                        contact.put("user_id", user_id);
-                        contact.put("mail", mail);
+                            // adding each child node to HashMap key => value
+                            contact.put("studName", studName);
+                            contact.put("student_id", student_Id);
+                            contact.put("attendDate", dates);
 
-                        // adding contact to contact list
-                        contactList.add(contact);
+                            // adding contact to contact list
+                            contactList.add(contact);
+                        }
                     }
 
                 } catch (final JSONException e) {
@@ -163,9 +208,10 @@ public class Parent_contact extends AppCompatActivity {
              * Updating parsed JSON data into ListView
              * */
             ListAdapter adapter = new SimpleAdapter(
-                    Parent_contact.this, contactList,
-                    R.layout.stafflist_item, new String[]{"user_id","mail", "staff_name", "teaching_class"}, new int[]{R.id.userId
-                    ,R.id.mail, R.id.staffName, R.id.tClass});
+                    Teacher_select_class_attend.this, contactList,
+                    R.layout.teacher_attenlist_item, new String[]{"studName","student_id",
+                    "attendDate"}, new int[]{R.id.studName,
+                     R.id.studentId, R.id.attenDate});
 
             lv.setAdapter(adapter);
         }

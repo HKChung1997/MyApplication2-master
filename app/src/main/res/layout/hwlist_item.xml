@@ -3,39 +3,87 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Class : "
+            android:layout_weight="50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tvClass" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Class" /></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Subject :"
+            android:layout_weight="50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tvSubject" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Subject" /></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Title :"
+            android:layout_weight="50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tvTitle" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Title" /></LinearLayout>
     <TextView
-        android:layout_width="fill_parent"
+        android:text="Description :"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Class"
-        android:textStyle="bold"/>
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Subject" />
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/Title" />
+        android:textStyle="bold"
+        android:id="@+id/tvDescription" />
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/Description" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
-        android:text="Post date"
-        android:layout_width="fill_parent"
+        android:text="Post date : "
+        android:layout_weight="50"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:id="@+id/tvpostDate" />
     <TextView
-        android:layout_width="fill_parent"
+        android:gravity="left"
+        android:layout_weight="50"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/postDate" />
+        android:id="@+id/postDate" /></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <TextView
-        android:text="Deadline"
+        android:text="Deadline : "
+        android:layout_weight="50"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:id="@+id/tvdeadLine" />
     <TextView
         android:layout_width="fill_parent"
+        android:layout_weight="50"
         android:layout_height="wrap_content"
-        android:id="@+id/deadLine" />
+        android:id="@+id/deadLine" /></LinearLayout>
 </LinearLayout>
