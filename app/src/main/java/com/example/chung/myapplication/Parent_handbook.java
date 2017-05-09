@@ -100,7 +100,7 @@ public class Parent_handbook extends AppCompatActivity {
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
 
-                        String id = c.getString("id");
+                        String rid = c.getString("rid");
                         String content = c.getString("content");
                         // Phone node is JSON Object
                         /*JSONArray date = c.getJSONArray("student_attend");
@@ -112,7 +112,7 @@ public class Parent_handbook extends AppCompatActivity {
                             HashMap<String, String> contact = new HashMap<>();
 
                             // adding each child node to HashMap key => value
-                            contact.put("id", id);
+                            contact.put("rid", rid);
                             contact.put("content", content);
 
                             // adding contact to contact list
@@ -160,7 +160,7 @@ public class Parent_handbook extends AppCompatActivity {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     Parent_handbook.this, contactList,
-                    R.layout.rulelist_item, new String[]{"id","content"}, new int[]{R.id.ruleId
+                    R.layout.rulelist_item, new String[]{"rid","content"}, new int[]{R.id.ruleId
                     ,R.id.ruleContent});
 
             lv.setAdapter(adapter);

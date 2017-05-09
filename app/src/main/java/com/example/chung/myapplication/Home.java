@@ -23,20 +23,22 @@ public class Home extends AppCompatActivity {
         Button btnTAttend = (Button) findViewById(R.id.bTAttend);
         //Button btnTHomework = (Button) findViewById(R.id.bTHomework);
         Intent intent = getIntent();
-        Bundle bundle = this.getIntent().getExtras();
-        int userId = bundle.getInt("user_id");
+        final Bundle bundle = this.getIntent().getExtras();
+        final int userId = bundle.getInt("user_id");
         String type = intent.getStringExtra("type");
+        tvVersion.setText(type);
+        tvId.setText("" + userId);
         final String username = intent.getStringExtra("username");
         final String password = intent.getStringExtra("password");
         tvUsername.setText(username);
-        tvVersion.setText(type);
-        tvId.setText("" + userId);
+        final String user_id = tvId.getText().toString();
         btnQRintent.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
+                intent.putExtra("user_id", user_id);
                 intent.setClass(Home.this, Teacher_select_hwQR_code.class);
                 Home.this.startActivity(intent);
             }
@@ -47,6 +49,7 @@ public class Home extends AppCompatActivity {
                 Intent intent = new Intent ();
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
+                intent.putExtra("user_id", user_id);
                 intent.setClass(Home.this, Teacher_attend.class);
                 Home.this.startActivity(intent);
             }
@@ -55,6 +58,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
+                intent.putExtra("user_id", user_id);
                 intent.setClass(Home.this, Teacher_hw_add.class);
                 Home.this.startActivity(intent);
             }
@@ -63,6 +67,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
+                intent.putExtra("user_id", user_id);
                 intent.setClass(Home.this, Teacher_hw_chk.class);
                 Home.this.startActivity(intent);
             }

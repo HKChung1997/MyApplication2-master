@@ -32,7 +32,7 @@ public class Home2 extends AppCompatActivity {
         Button btnPNotification = (Button) findViewById(R.id.bPNotification);
         Intent intent = getIntent();
         Bundle bundle = this.getIntent().getExtras();
-        int userId = bundle.getInt("user_id");
+        final int userId = bundle.getInt("user_id");
         String type = intent.getStringExtra("type");
         final String username = intent.getStringExtra("username");
         final String password = intent.getStringExtra("password");
@@ -45,6 +45,7 @@ public class Home2 extends AppCompatActivity {
                 Intent intent = new Intent (Home2.this, Parent_attend.class);
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
+                intent.putExtra("user_id", userId);
                 Home2.this.startActivity(intent);
             }
         });
@@ -55,6 +56,7 @@ public class Home2 extends AppCompatActivity {
                 Intent intent = new Intent ();
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
+                intent.putExtra("user_id", userId);
                 intent.setClass(Home2.this, Parent_contact.class);
                 Home2.this.startActivity(intent);
             }
@@ -63,9 +65,10 @@ public class Home2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
-                intent.setClass(Home2.this, dummy1.class);
+                intent.setClass(Home2.this, Parent_handbook.class);
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
+                intent.putExtra("user_id", userId);
                 Home2.this.startActivity(intent);
             }
         });
@@ -76,6 +79,7 @@ public class Home2 extends AppCompatActivity {
                 intent.setClass(Home2.this, Parent_homwork.class);
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
+                intent.putExtra("user_id", userId);
                 Home2.this.startActivity(intent);
             }
         });
@@ -86,6 +90,7 @@ public class Home2 extends AppCompatActivity {
                 intent.setClass(Home2.this, Parent_notice.class);
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
+                intent.putExtra("user_id", userId);
                 Home2.this.startActivity(intent);
             }
         });
@@ -95,6 +100,7 @@ public class Home2 extends AppCompatActivity {
                 Intent intent = new Intent ();
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
+                intent.putExtra("user_id", userId);
                 intent.setClass(Home2.this, Parent_notification.class);
                 Home2.this.startActivity(intent);
             }

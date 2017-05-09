@@ -65,12 +65,12 @@
             android:name=".Teacher_select_hwQR_code"
             android:label="QR Code" />
         <activity
-            android:name=".dummy1"
-            android:label="Handbook" />
-        <activity android:name=".Teacher_hw_add"
-            android:label="Homework Add"/>
-        <activity android:name=".Teacher_hw_chk"
-            android:label="Homework Check"></activity>
+            android:name=".Teacher_hw_add"
+            android:label="Homework Add" />
+        <activity
+            android:name=".Teacher_hw_chk"
+            android:label="Homework Check" />
+        <activity android:name=".QRCodeConfirm"></activity>
     </application>
 
 </manifest>
