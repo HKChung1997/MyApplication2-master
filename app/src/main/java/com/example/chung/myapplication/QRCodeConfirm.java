@@ -16,40 +16,30 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QRCodeConfirm extends AppCompatActivity {
+    private String username;
+    private String password;
+    private String hw_Id;
+    private String stud_Id;
+    private String staff_Id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode_confirm);
-        final TextView tvUsername = (TextView) findViewById(R.id.QRusername);
-        final TextView tvPassword = (TextView) findViewById(R.id.QRpassword);
-        final TextView tvStudId = (TextView) findViewById(R.id.QRuserid);
-        final TextView tvHwId = (TextView) findViewById(R.id.QRselected);
-        final TextView tvUserid = (TextView) findViewById(R.id.QRstaff);
         final Button btnAdd = (Button) findViewById(R.id.btnAdd);
         Intent intent = getIntent();
         final Bundle bundle = this.getIntent().getExtras();
-        final String tvusername = bundle.getString("username");
-        final String tvpassword = bundle.getString("password");
-        final String tvhwId = bundle.getString("hwId");
-        final String tvstudId = bundle.getString("studId");
-        final String tvstaffId = bundle.getString("userId");
-        tvUsername.setText(tvusername);
-        tvUserid.setText(tvstaffId);
-        tvPassword.setText(tvpassword);
-        tvStudId.setText(tvstudId);
-        tvHwId.setText(tvhwId);
+        username= bundle.getString("username");
+        password = bundle.getString("password");
+        hw_Id= bundle.getString("hwId");
+        stud_Id= bundle.getString("studId");
+        staff_Id= bundle.getString("userId");
         btnAdd.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v) {
-                final String username = tvUsername.getText().toString();
-                final String password = tvPassword.getText().toString();
-                final String c = tvUserid.getText().toString();
-                final String d = tvStudId.getText().toString();
-                final String e = tvHwId.getText().toString();
-                int staffId = Integer.valueOf(c);
-                int studId = Integer.valueOf(d);
-                int hwId = Integer.valueOf(e);
+                int staffId = Integer.valueOf(staff_Id);
+                int studId = Integer.valueOf(stud_Id);
+                int hwId = Integer.valueOf(hw_Id);
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -74,5 +64,9 @@ public class QRCodeConfirm extends AppCompatActivity {
                 queue.add(addhwrecordRequest);
             }
         });
+        TextView tvStudid = (TextView)findViewById(R.id.QRstudId);
+        TextView tvHWid = (TextView)findViewById(R.id.QRhwId);
+        tvHWid.setText(hw_Id);
+        tvStudid.setText(stud_Id);
     }
 }

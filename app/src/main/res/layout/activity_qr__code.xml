@@ -13,27 +13,4 @@
         android:id="@+id/bQR"
         android:text="Scan"
         android:onClick="onClick" />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="username"
-        android:id="@+id/QRusername"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="password"
-        android:id="@+id/QRpassword"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="userid"
-        android:id="@+id/QRuserid"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="selectedItem"
-        android:id="@+id/QRselected"/></LinearLayout>
 </LinearLayout>

@@ -8,7 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Login "
+        android:label="PrimarySchoolHWandAttendSys "
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -70,8 +70,10 @@
         <activity
             android:name=".Teacher_hw_chk"
             android:label="Homework Check" />
-        <activity android:name=".QRCodeConfirm" />
-        <activity android:name=".Teacher_hw_selected_chk"></activity>
+        <activity android:name=".QRCodeConfirm"
+            android:label="QRCode" />
+        <activity android:name=".Teacher_hw_selected_chk"
+            android:label="Homework Check"></activity>
     </application>
 
 </manifest>

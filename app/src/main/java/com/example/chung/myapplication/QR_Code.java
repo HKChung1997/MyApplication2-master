@@ -32,20 +32,12 @@ public class QR_Code extends Activity implements ZXingScannerView.ResultHandler 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr__code);
-        final TextView tvUsername = (TextView) findViewById(R.id.QRusername);
-        final TextView tvPassword = (TextView) findViewById(R.id.QRpassword);
-        final TextView tvUserId = (TextView) findViewById(R.id.QRuserid);
-        final TextView tvSelected = (TextView) findViewById(R.id.QRselected);
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
         password = intent.getStringExtra("password");
         userid = intent.getStringExtra("user_id");
         hwid = intent.getStringExtra("hwid");
         hw_id = Integer.valueOf(hwid);
-        tvUsername.setText(username);
-        tvPassword.setText(password);
-        tvUserId.setText(userid);
-        tvSelected.setText(hwid);
 
     }
 
