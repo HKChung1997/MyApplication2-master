@@ -58,6 +58,8 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
+                intent.putExtra("username",username);
+                intent.putExtra("password",password);
                 intent.putExtra("user_id", user_id);
                 intent.setClass(Home.this, Teacher_hw_add.class);
                 Home.this.startActivity(intent);

@@ -9,6 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/tvClass"
         android:text="Class" />
     <EditText
         android:layout_width="match_parent"
@@ -25,7 +26,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username" />
+        android:text="Title" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +34,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title" />
+        android:text="Description" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,12 +43,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Deadline" />
-    <EditText
+    <DatePicker
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/etDeadline" />
+        android:id="@+id/datePicker"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"></DatePicker>
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/btnAddhw"
         android:text="Add"/>
 </LinearLayout>
