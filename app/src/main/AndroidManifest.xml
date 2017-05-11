@@ -70,7 +70,8 @@
         <activity
             android:name=".Teacher_hw_chk"
             android:label="Homework Check" />
-        <activity android:name=".QRCodeConfirm"></activity>
+        <activity android:name=".QRCodeConfirm" />
+        <activity android:name=".Teacher_hw_selected_chk"></activity>
     </application>
 
 </manifest>
