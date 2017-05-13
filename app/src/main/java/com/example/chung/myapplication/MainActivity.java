@@ -10,9 +10,6 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.example.chung.myapplication.Forgot;
-import com.example.chung.myapplication.LoginRequest;
-import com.example.chung.myapplication.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

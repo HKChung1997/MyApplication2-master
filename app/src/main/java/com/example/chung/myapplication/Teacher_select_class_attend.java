@@ -72,6 +72,7 @@ public class Teacher_select_class_attend extends AppCompatActivity {
     private String password;
     private String Class;
     private String url;
+    private String date;
     //Button Event = (Button)findViewById(R.id.btEvent);
     //final TextView username = (TextView)findViewById(R.id.test);
     //final TextView password = (TextView)findViewById(R.id.test2);
@@ -90,9 +91,12 @@ public class Teacher_select_class_attend extends AppCompatActivity {
         Class = intent.getStringExtra("selected");
         username = intent.getStringExtra("username");
         password= intent.getStringExtra("password");
+        date = intent.getStringExtra("Date");
         url = "https://lenchan139.org/myWorks/fyp/android/staff_only/attendDetails.php?"+"username="+username+"&password="+password+"&class="+Class;
         TextView tvClass = (TextView)findViewById(R.id.tvClass);
+        TextView tvDate = (TextView)findViewById(R.id.tvDate);
         tvClass.setText(Class);
+        tvDate.setText(date);
         //Intent intent = getIntent();
         //final String str = intent.getStringExtra("test");
         //final String str2 = intent.getStringExtra("test2");
@@ -162,9 +166,10 @@ public class Teacher_select_class_attend extends AppCompatActivity {
                             contact.put("studName", studName);
                             contact.put("student_id", student_Id);
                             contact.put("attendDate", dates);
-
-                            // adding contact to contact list
-                            contactList.add(contact);
+                            if (dates.equals(date)) {
+                                // adding contact to contact list
+                                contactList.add(contact);
+                            }
                         }
                     }
 

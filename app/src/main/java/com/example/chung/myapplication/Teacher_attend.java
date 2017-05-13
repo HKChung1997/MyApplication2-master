@@ -23,7 +23,7 @@ public class Teacher_attend extends AppCompatActivity {
         final String username = intent.getStringExtra("username");
         final String password = intent.getStringExtra("password");
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        final DatePicker datePicker = (DatePicker)findViewById(R.id.datePicker);
+        final DatePicker dpDatePicker = (DatePicker)findViewById(R.id.datePicker);
         final String[] Class = {"-class-","1A","1B","1C","1D","2A","2B","2C","2D","3A","3B","3C","3D","4A","4B","4C","4D","5A","5B","5C","5D","6A","6B","6C","6D"};
         ArrayAdapter<String> ClassList = new ArrayAdapter<>(Teacher_attend.this,
                 android.R.layout.simple_spinner_dropdown_item,
@@ -42,9 +42,12 @@ public class Teacher_attend extends AppCompatActivity {
             }
         });
         btnSelect.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
+                final int day = dpDatePicker.getDayOfMonth();
+                final int month = dpDatePicker.getMonth();
+                final int year = dpDatePicker.getYear();
+                final String Date = year+"-"+month+"-"+day;
                 String error = new String("-class--");
                 if (selected.equals(error)) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Please select a valid class", Toast.LENGTH_LONG);
@@ -54,6 +57,7 @@ public class Teacher_attend extends AppCompatActivity {
                     intent.putExtra("username", username);
                     intent.putExtra("password", password);
                     intent.putExtra("selected", selected);
+                    intent.putExtra("Date", Date);
                     Teacher_attend.this.startActivity(intent);
                 }
             }

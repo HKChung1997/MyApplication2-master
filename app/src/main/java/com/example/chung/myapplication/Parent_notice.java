@@ -5,6 +5,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -49,17 +52,19 @@ public class Parent_notice extends AppCompatActivity {
     private String username;
     private String password;
     private String url;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_notice);
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
-        password= intent.getStringExtra("password");
-        url = "https://lenchan139.org/myWorks/fyp/android/noticeList.php?"+"username="+username+"&password="+password;
+        password = intent.getStringExtra("password");
+        url = "https://lenchan139.org/myWorks/fyp/android/noticeList.php?" + "username=" + username + "&password=" + password;
+        Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
+
 
         contactList = new ArrayList<>();
-
         lv = (ListView) findViewById(R.id.noticeList);
         new GetContacts().execute();
     }
