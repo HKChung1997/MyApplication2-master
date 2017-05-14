@@ -39,6 +39,7 @@ public class QR_Code extends Activity implements ZXingScannerView.ResultHandler 
         hwid = intent.getStringExtra("hwid");
         hw_id = Integer.valueOf(hwid);
 
+
     }
 
     public static int ordinalIndexOf(String str, String substr, int n) {
@@ -48,12 +49,14 @@ public class QR_Code extends Activity implements ZXingScannerView.ResultHandler 
         return pos;
     }
 
+
     public void onClick(View v) {
         mScannerView = new ZXingScannerView(this);
         setContentView(mScannerView);
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
     }
+
 
     @Override
     protected void onPause() {

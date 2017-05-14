@@ -56,9 +56,6 @@
             android:name=".Parent_eventAttend"
             android:label="Event Attendance" />
         <activity
-            android:name=".Teacher_select_qr_code"
-            android:label="QR Code" />
-        <activity
             android:name=".Teacher_select_class_attend"
             android:label="Attendance" />
         <activity

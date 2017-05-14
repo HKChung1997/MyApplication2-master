@@ -72,16 +72,12 @@ public class Teacher_select_class_attend extends AppCompatActivity {
     private String password;
     private String Class;
     private String url;
-    private String date;
-    //Button Event = (Button)findViewById(R.id.btEvent);
-    //final TextView username = (TextView)findViewById(R.id.test);
-    //final TextView password = (TextView)findViewById(R.id.test2);
+    private String jsonStr;
+    private String dates;
+    private String selectedDate;
+    private HashMap<String, String> contact2 = new HashMap<String, String>();
     // URL to get contacts JSON
     ArrayList<HashMap<String, String>> contactList;
-    //String username = getIntent().getExtras().getString("test").toString();
-    // String password = getIntent().getExtras().getString("test2").toString();
-    //username.setText(str);
-    //password.setText(str2);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,30 +86,13 @@ public class Teacher_select_class_attend extends AppCompatActivity {
         Intent intent = getIntent();
         Class = intent.getStringExtra("selected");
         username = intent.getStringExtra("username");
-        password= intent.getStringExtra("password");
-        date = intent.getStringExtra("Date");
-        url = "https://lenchan139.org/myWorks/fyp/android/staff_only/attendDetails.php?"+"username="+username+"&password="+password+"&class="+Class;
-        TextView tvClass = (TextView)findViewById(R.id.tvClass);
-        TextView tvDate = (TextView)findViewById(R.id.tvDate);
+        password = intent.getStringExtra("password");
+        selectedDate = intent.getStringExtra("Date");
+        url = "https://lenchan139.org/myWorks/fyp/android/staff_only/attendDetails.php?" + "username=" + username + "&password=" + password + "&class=" + Class;
+        TextView tvClass = (TextView) findViewById(R.id.tvClass);
         tvClass.setText(Class);
-        tvDate.setText(date);
-        //Intent intent = getIntent();
-        //final String str = intent.getStringExtra("test");
-        //final String str2 = intent.getStringExtra("test2");
-        //username.setText(str);
-        //password.setText(str2);
         lv = (ListView) findViewById(R.id.classAttenList);
-        new GetContacts().execute();
-        /*Event.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent ();
-                intent.setClass(Parent_eventAttend.this, Parent_handbook.class);
-                intent.putExtra("username",username);
-                intent.putExtra("password",password);
-                Parent_eventAttend.this.startActivity(intent);
-            }
-        });*/
+            new GetContacts().execute();
     }
 
     /**
@@ -137,11 +116,11 @@ public class Teacher_select_class_attend extends AppCompatActivity {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall(url);
+            jsonStr = sh.makeServiceCall(url);
 
             Log.e(TAG, "Response from url: " + jsonStr);
 
-            if (jsonStr != null) {
+            if (jsonStr != null ) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
@@ -158,18 +137,22 @@ public class Teacher_select_class_attend extends AppCompatActivity {
                         for (int j = 0; j < date.length(); j++) {
                             JSONObject jsonObject = date.getJSONObject(j);
 
-                            String dates = jsonObject.getString("attend_date");
-                            // tmp hash map for single contact
-                            HashMap<String, String> contact = new HashMap<>();
-
-                            // adding each child node to HashMap key => value
-                            contact.put("studName", studName);
-                            contact.put("student_id", student_Id);
-                            contact.put("attendDate", dates);
-                            if (dates.equals(date)) {
-                                // adding contact to contact list
-                                contactList.add(contact);
+                            dates = jsonObject.getString("attend_date");
+                                // tmp hash map for single contact
+                                // adding each child node to HashMap key => value
+                            HashMap<String,String> contact = new HashMap<String, String>();
+                                contact.put("studName", studName);
+                                contact.put("student_id", student_Id);
+                                contact.put("attendDate", dates);
+                            for (HashMap.Entry<String, String> entry :contact.entrySet()) {
+                                if (entry.getValue().equals(selectedDate)) {
+                                    contact2.put("studName", studName);
+                                    contact2.put("student_id", student_Id);
+                                    contact2.put("attendDate", dates);
+                                    contactList.add(contact2);
+                                }
                             }
+                            // adding contact to contact list
                         }
                     }
 
@@ -199,10 +182,9 @@ public class Teacher_select_class_attend extends AppCompatActivity {
                 });
 
             }
+                return null;
 
-            return null;
         }
-
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
@@ -217,8 +199,7 @@ public class Teacher_select_class_attend extends AppCompatActivity {
                     R.layout.teacher_attenlist_item, new String[]{"studName","student_id",
                     "attendDate"}, new int[]{R.id.studName,
                      R.id.studentId, R.id.attenDate});
-
-            lv.setAdapter(adapter);
+                lv.setAdapter(adapter);
         }
 
     }
