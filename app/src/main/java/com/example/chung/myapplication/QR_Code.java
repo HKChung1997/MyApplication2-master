@@ -29,6 +29,11 @@ public class QR_Code extends Activity implements ZXingScannerView.ResultHandler 
     private String studIdResult;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr__code);
@@ -38,8 +43,7 @@ public class QR_Code extends Activity implements ZXingScannerView.ResultHandler 
         userid = intent.getStringExtra("user_id");
         hwid = intent.getStringExtra("hwid");
         hw_id = Integer.valueOf(hwid);
-
-
+        mScannerView = new ZXingScannerView(this);
     }
 
     public static int ordinalIndexOf(String str, String substr, int n) {
@@ -51,7 +55,6 @@ public class QR_Code extends Activity implements ZXingScannerView.ResultHandler 
 
 
     public void onClick(View v) {
-        mScannerView = new ZXingScannerView(this);
         setContentView(mScannerView);
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();

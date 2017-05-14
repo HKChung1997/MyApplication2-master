@@ -200,7 +200,7 @@ public class Parent_notification extends AppCompatActivity {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     Parent_notification.this, contactList,
-                    R.layout.notificationlist_item, new String[]{"notify_id","title"}, new int[]{R.id.tvNFid,
+                    R.layout.notificationlist_item, new String[]{"title"}, new int[]{
                     R.id.tvNFtitle});
 
             lv.setAdapter(adapter);

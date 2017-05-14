@@ -39,13 +39,14 @@ public class Home2 extends AppCompatActivity {
         etUsername.setText(username);
         etVersion.setText(type);
         tvId.setText("" + userId);
+        final String user_id = tvId.getText().toString();
         btnPAttend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent (Home2.this, Parent_attend.class);
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
-                intent.putExtra("user_id", userId);
+                intent.putExtra("user_id", user_id);
                 Home2.this.startActivity(intent);
             }
         });
@@ -56,7 +57,7 @@ public class Home2 extends AppCompatActivity {
                 Intent intent = new Intent ();
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
-                intent.putExtra("user_id", userId);
+                intent.putExtra("user_id", user_id);
                 intent.setClass(Home2.this, Parent_contact.class);
                 Home2.this.startActivity(intent);
             }
@@ -68,7 +69,7 @@ public class Home2 extends AppCompatActivity {
                 intent.setClass(Home2.this, Parent_handbook.class);
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
-                intent.putExtra("user_id", userId);
+                intent.putExtra("user_id", user_id);
                 Home2.this.startActivity(intent);
             }
         });
@@ -76,10 +77,10 @@ public class Home2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
-                intent.setClass(Home2.this, Parent_homwork.class);
+                intent.setClass(Home2.this, Teacher_hw_stud_select.class);
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
-                intent.putExtra("user_id", userId);
+                intent.putExtra("user_id", user_id);
                 Home2.this.startActivity(intent);
             }
         });
@@ -90,7 +91,7 @@ public class Home2 extends AppCompatActivity {
                 intent.setClass(Home2.this, Parent_notice.class);
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
-                intent.putExtra("user_id", userId);
+                intent.putExtra("user_id", user_id);
                 Home2.this.startActivity(intent);
             }
         });
@@ -100,7 +101,7 @@ public class Home2 extends AppCompatActivity {
                 Intent intent = new Intent ();
                 intent.putExtra("username",username);
                 intent.putExtra("password",password);
-                intent.putExtra("user_id", userId);
+                intent.putExtra("user_id", user_id);
                 intent.setClass(Home2.this, Parent_notification.class);
                 Home2.this.startActivity(intent);
             }

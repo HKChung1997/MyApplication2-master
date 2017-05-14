@@ -21,6 +21,7 @@ public class QRCodeConfirm extends AppCompatActivity {
     private String hw_Id;
     private String stud_Id;
     private String staff_Id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

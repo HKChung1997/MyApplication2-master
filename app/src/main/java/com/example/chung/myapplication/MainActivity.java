@@ -14,7 +14,22 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 public class MainActivity extends AppCompatActivity {
+    private String isSuccess;
+    private String isFail;
+    private String loginCHK;
+    private String type;
+    private String username;
+    private String password;
+    private String parent;
+    private String staff;
+    private Integer userId;
+    public void toastmessage() {
+        Toast toast;
+        toast = Toast.makeText(MainActivity.this, "Login Fail", Toast.LENGTH_LONG);
+        toast.show();
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,25 +40,26 @@ public class MainActivity extends AppCompatActivity {
         Button btnLogin = (Button) findViewById(R.id.bLogin);
 
 
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String username = etUsername.getText().toString();
-                final String password = etPassword.getText().toString();
+                username = etUsername.getText().toString();
+                password = etPassword.getText().toString();
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            String loginCHK = jsonResponse.getString("isVaild");
-                            Integer userId = jsonResponse.getInt("user_id");
-                            String username = jsonResponse.getString("username");
-                            String type = jsonResponse.getString("type");
-                            String isSuccess = new String("true");
-                            String isFail = new String("false");
-                            String parent = new String("parent");
-                            String staff = new String("staff");
+                            type = jsonResponse.getString("type");
+                            loginCHK = jsonResponse.getString("isVaild");
+                            isSuccess = new String("true");
+                            isFail = new String("false");
+                            parent = new String("parent");
+                            staff = new String("staff");
                             if (loginCHK.equals(isSuccess) && type.equals(staff)) {
+                                userId = jsonResponse.getInt("user_id");
+                                username = jsonResponse.getString("username");
                                 Intent intent = new Intent(MainActivity.this, Home.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("user_id", userId);
@@ -52,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("password", password);
                                 intent.putExtra("username", username);
                                 MainActivity.this.startActivity(intent);
-                            }  else if (loginCHK.equals(isSuccess) && type.equals(parent)){
+                            } else if (loginCHK.equals(isSuccess) && type.equals(parent)) {
+                                userId = jsonResponse.getInt("user_id");
+                                username = jsonResponse.getString("username");
                                 Intent intent = new Intent(MainActivity.this, Home2.class);
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("user_id", userId);
@@ -62,10 +80,8 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("password", password);
                                 MainActivity.this.startActivity(intent);
                             } else if (loginCHK.equals(isFail)){
-                                Toast toast = Toast.makeText(MainActivity.this, "Login Fail", Toast.LENGTH_LONG);
-                                toast.show();
+                                toastmessage();
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -7,12 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
+import android.widget.AdapterView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,7 +52,10 @@ public class Parent_notice extends AppCompatActivity {
     ArrayList<HashMap<String, String>> contactList;
     private String username;
     private String password;
+    private String user_id;
     private String url;
+    private ListAdapter adapter;
+    private HashMap<String, String> contact = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,15 +64,27 @@ public class Parent_notice extends AppCompatActivity {
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
         password = intent.getStringExtra("password");
+        user_id = intent.getStringExtra("user_id");
         url = "https://lenchan139.org/myWorks/fyp/android/noticeList.php?" + "username=" + username + "&password=" + password;
-        Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
 
 
         contactList = new ArrayList<>();
         lv = (ListView) findViewById(R.id.noticeList);
         new GetContacts().execute();
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
+                String value = lv.getItemAtPosition(position).toString();
+                Intent intent = new Intent();
+                intent.setClass(Parent_notice.this, notice_item.class);
+                intent.putExtra("test", value);
+                intent.putExtra("username", username);
+                intent.putExtra("password", password);
+                intent.putExtra("user_id", user_id);
+                Parent_notice.this.startActivity(intent);
+            }
+        });
     }
-
     /**
      * Async task class to get json by making HTTP call
      */
@@ -119,7 +135,7 @@ public class Parent_notice extends AppCompatActivity {
 
                             String dates = jsonObject.getString("read_time");*/
                         // tmp hash map for single contact
-                        HashMap<String, String> contact = new HashMap<>();
+                        contact = new HashMap<>();
 
                         // adding each child node to HashMap key => value
                         contact.put("id", id);
@@ -173,9 +189,9 @@ public class Parent_notice extends AppCompatActivity {
             /**
              * Updating parsed JSON data into ListView
              * */
-            ListAdapter adapter = new SimpleAdapter(
+            adapter = new SimpleAdapter(
                     Parent_notice.this, contactList,
-                    R.layout.noticelist_item, new String[]{"id","title","description", "post_date", "begin_time", "end_time", "submit_deadline"}, new int[]{R.id.noticeId
+                    R.layout.activity_notice_item, new String[]{"id","title","description", "post_date", "begin_time", "end_time", "submit_deadline"}, new int[]{R.id.noticeId
                     ,R.id.noticeTitle, R.id.noticeDescription, R.id.noticePDate, R.id.noticeBT, R.id.noticeET, R.id.noticeDL});
 
             lv.setAdapter(adapter);

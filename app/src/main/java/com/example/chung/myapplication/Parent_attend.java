@@ -45,7 +45,7 @@ public class Parent_attend extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_attend);
-        Button btnEvent = (Button)findViewById(R.id.btEvent);
+        //Button btnEvent = (Button)findViewById(R.id.btEvent);
         contactList = new ArrayList<>();
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
@@ -59,7 +59,7 @@ public class Parent_attend extends AppCompatActivity {
         //password.setText(str2);
         lv = (ListView) findViewById(R.id.attenList);
         new GetContacts().execute();
-        btnEvent.setOnClickListener(new View.OnClickListener(){
+        /*btnEvent.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ();
@@ -69,8 +69,7 @@ public class Parent_attend extends AppCompatActivity {
                 Parent_attend.this.startActivity(intent);
             }
         });
-    }
-
+*/    }
     /**
      * Async task class to get json by making HTTP call
      */

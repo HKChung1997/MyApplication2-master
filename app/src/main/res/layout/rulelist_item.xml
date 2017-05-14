@@ -2,14 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_weight="20"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ruleId"
+        android:text="Rule "
         android:textStyle="bold"/>
     <TextView
-        android:gravity="right"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ruleId"
+        android:textStyle="bold"/>
+</LinearLayout>
+    <TextView
+        android:gravity="left"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/ruleContent" />

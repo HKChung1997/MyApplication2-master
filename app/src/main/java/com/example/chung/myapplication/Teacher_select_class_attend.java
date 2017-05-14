@@ -149,7 +149,7 @@ public class Teacher_select_class_attend extends AppCompatActivity {
                                     contact2.put("studName", studName);
                                     contact2.put("student_id", student_Id);
                                     contact2.put("attendDate", dates);
-                                    contactList.add(contact2);
+                                    contactList.add(contact);
                                 }
                             }
                             // adding contact to contact list

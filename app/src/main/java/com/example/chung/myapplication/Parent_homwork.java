@@ -3,11 +3,13 @@ package com.example.chung.myapplication;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -52,17 +54,21 @@ public class Parent_homwork extends AppCompatActivity {
     private String username;
     private String password;
     private String url;
+    private String selected;
+    private String selectedClass;
+    private HashMap<String, String> contact2 = new HashMap<String, String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_homwork);
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
-        password= intent.getStringExtra("password");
+        password = intent.getStringExtra("password");
+        selected = intent.getStringExtra("selected");
+        selectedClass = intent.getStringExtra("selectedClass");
         url = "https://lenchan139.org/myWorks/fyp/android/homeworkList.php?"+"username="+username+"&password="+password;
-
+        TextView test = (TextView) findViewById(R.id.test);
         contactList = new ArrayList<>();
-
         lv = (ListView) findViewById(R.id.hwList);
         new GetContacts().execute();
     }
@@ -118,12 +124,21 @@ public class Parent_homwork extends AppCompatActivity {
                         contact.put("Subject", Subject);
                         contact.put("Title", Title);
                         contact.put("Description", Description);
-                        contact.put("postDate",postDate);
+                        contact.put("postDate", postDate);
                         contact.put("deadLine", deadLine);
-
-                            // adding contact to contact list
-                            contactList.add(contact);
+                        for (HashMap.Entry<String, String> entry : contact.entrySet()) {
+                            if (entry.getValue().equals(selectedClass)) {
+                                contact2.put("Class", Class);
+                                contact2.put("Subject", Subject);
+                                contact2.put("Title", Title);
+                                contact2.put("Description", Description);
+                                contact2.put("postDate", postDate);
+                                contact2.put("deadLine", deadLine);
+                                // adding contact to contact list
+                                contactList.add(contact);
+                            }
                         }
+                    }
 
 
                 } catch (final JSONException e) {

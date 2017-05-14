@@ -15,7 +15,6 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="th"
         android:maxLines="1"
         android:lines="1"
         android:ellipsize="end"
@@ -30,7 +29,6 @@
         android:id="@+id/etPassword"
         android:maxLines="1"
         android:lines="1"
-        android:text="pw"
         android:ellipsize="end"
         android:password="true"/>
     <Button
