@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Notice ID : "
+            android:layout_weight="50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tvNoticeId" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/noticeId" /></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Title : "
+            android:layout_weight="50"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tvTitle" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/noticeTitle" /></LinearLayout>
+    <TextView
+        android:text="Notice Description : "
+        android:layout_weight="50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:id="@+id/tvNoticeDescription" />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/noticeDescription" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Post Date : "
+            android:layout_weight="50"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tvPDate" />
+        <TextView
+            android:layout_weight="50"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/noticePDate" /></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Begin Time : "
+            android:layout_weight="50"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tvBeginTime" />
+        <TextView
+            android:layout_weight="50"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/noticeBT" /></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="End Time : "
+            android:layout_weight="50"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tvEndTime" />
+        <TextView
+            android:layout_weight="50"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/noticeET" /></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Dead Line : "
+            android:layout_weight="50"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/tvDeadLine" />
+        <TextView
+            android:layout_weight="50"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/noticeDL" /></LinearLayout>/>
+</LinearLayout>
