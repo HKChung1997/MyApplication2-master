@@ -67,7 +67,7 @@ public class Teacher_hw_add extends AppCompatActivity {
                 final String Title = etTitle.getText().toString();
                 final String Description = etDescription.getText().toString();
                 final int day = dpDatePicker.getDayOfMonth();
-                final int month = dpDatePicker.getMonth();
+                final int month = dpDatePicker.getMonth()+1;
                 final int year = dpDatePicker.getYear();
                 final String deadline = year+"-"+month+"-"+day;
 

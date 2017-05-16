@@ -54,6 +54,7 @@ public class Teacher_hw_selected_chk extends AppCompatActivity {
     private String password;
     private String Class;
     private String hwid;
+    private HashMap<String, String> contact2 = new HashMap<String, String>();
     private String url;
     //Button Event = (Button)findViewById(R.id.btEvent);
     //final TextView username = (TextView)findViewById(R.id.test);
@@ -145,15 +146,19 @@ public class Teacher_hw_selected_chk extends AppCompatActivity {
                             HashMap<String, String> contact = new HashMap<>();
 
                             // adding each child node to HashMap key => value
-                            contact.put("studName", studName);
-                            contact.put("studClass", studClass);
-                            contact.put("student_id", studId);
-                            contact.put("record_id", recordId);
                             contact.put("hw_id", hwId);
-                            contact.put("read_time", dates);
-
                             // adding contact to contact list
-                            contactList.add(contact);
+                            for (HashMap.Entry<String, String> entry :contact.entrySet()) {
+                                if (entry.getValue().equals(hwid)) {
+                                    contact.put("studName", studName);
+                                    contact.put("studClass", studClass);
+                                    contact.put("student_id", studId);
+                                    contact.put("record_id", recordId);
+                                    contact.put("hw_id", hwId);
+                                    contact.put("read_time", dates);
+                                    contactList.add(contact);
+                                }
+                            }
                         }
                     }
 
