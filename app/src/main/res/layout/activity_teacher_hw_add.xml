@@ -11,10 +11,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvClass"
         android:text="Class" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/etClass" />
+    <Spinner
+        android:layout_width="fill_parent"
+        android:id="@+id/spinner"
+        android:layout_height="wrap_content"></Spinner>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,6 +22,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:singleLine="true"
         android:id="@+id/etSubject" />
     <TextView
         android:layout_width="wrap_content"
@@ -30,6 +31,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:singleLine="true"
         android:id="@+id/etTitle" />
     <TextView
         android:layout_width="wrap_content"

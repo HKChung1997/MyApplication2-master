@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.google.zxing.Result;
@@ -27,7 +28,13 @@ public class QR_Code extends Activity implements ZXingScannerView.ResultHandler 
     private int hw_id;
     private String strResult;
     private String studIdResult;
-
+    private String studIdWrongResult;
+    private  String Text;
+    public void toastmessage() {
+        Toast toast;
+        toast = Toast.makeText(QR_Code.this, "Please Scan A Valid QR Code", Toast.LENGTH_LONG);
+        toast.show();
+    };
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -70,18 +77,25 @@ public class QR_Code extends Activity implements ZXingScannerView.ResultHandler 
     @Override
     public void handleResult(Result result) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        Text = "ams_qr";
         strResult = result.getText();
-        int j = ordinalIndexOf(strResult, "'", 3);
-        int i = ordinalIndexOf(strResult, "'", 4);
-        studIdResult = strResult.substring(j+1, i);
-        Intent intent = new Intent(QR_Code.this, QRCodeConfirm.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("userId", userid);
-        bundle.putString("hwId", hwid);
-        bundle.putString("studId", studIdResult);
-        bundle.putString("password", password);
-        bundle.putString("username", username);
-        intent.putExtras(bundle);
-        QR_Code.this.startActivity(intent);
+        int y = ordinalIndexOf(strResult, ":", 1);
+        studIdWrongResult = strResult.substring(0, y);
+        if (studIdWrongResult.equals(Text)) {
+            int j = ordinalIndexOf(strResult, "'", 3);
+            int i = ordinalIndexOf(strResult, "'", 4);
+            studIdResult = strResult.substring(j + 1, i);
+            Intent intent = new Intent(QR_Code.this, QRCodeConfirm.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("userId", userid);
+            bundle.putString("hwId", hwid);
+            bundle.putString("studId", studIdResult);
+            bundle.putString("password", password);
+            bundle.putString("username", username);
+            intent.putExtras(bundle);
+            QR_Code.this.startActivity(intent);
+        } else if (!studIdWrongResult.equals(Text)){
+            toastmessage();
+        }
     }
 }

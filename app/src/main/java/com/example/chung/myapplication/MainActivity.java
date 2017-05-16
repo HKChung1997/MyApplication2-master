@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
+        final TextView Failmessage = (TextView)findViewById(R.id.Failmessage);
         Button btnLogin = (Button) findViewById(R.id.bLogin);
 
 
@@ -51,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            type = jsonResponse.getString("type");
-                            loginCHK = jsonResponse.getString("isVaild");
                             isSuccess = new String("true");
                             isFail = new String("false");
                             parent = new String("parent");
                             staff = new String("staff");
+                            type = jsonResponse.optString("type");
+                            loginCHK = jsonResponse.getString("isVaild");
                             if (loginCHK.equals(isSuccess) && type.equals(staff)) {
                                 userId = jsonResponse.getInt("user_id");
                                 username = jsonResponse.getString("username");
@@ -68,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("password", password);
                                 intent.putExtra("username", username);
                                 MainActivity.this.startActivity(intent);
+                            } else if (loginCHK.equals(isFail)) {
+                                toastmessage();
                             } else if (loginCHK.equals(isSuccess) && type.equals(parent)) {
                                 userId = jsonResponse.getInt("user_id");
                                 username = jsonResponse.getString("username");
@@ -79,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
                                 intent.putExtra("username", username);
                                 intent.putExtra("password", password);
                                 MainActivity.this.startActivity(intent);
-                            } else if (loginCHK.equals(isFail)){
-                                toastmessage();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

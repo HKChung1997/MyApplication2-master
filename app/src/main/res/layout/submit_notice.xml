@@ -20,6 +20,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/tvNoticeId"/></LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="I have read all the information and I agree."/>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">

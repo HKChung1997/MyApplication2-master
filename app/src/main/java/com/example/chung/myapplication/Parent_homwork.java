@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Filter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -48,14 +50,12 @@ public class Parent_homwork extends AppCompatActivity {
     private ListView lv;
     // URL to get contacts JSON
     ArrayList<HashMap<String, String>> contactList;
-    //String url2 = url + str + str2;
-    //String str = str.getStringExtra("username");
-    //String str2 = str2.getStringExtra("password");
     private String username;
     private String password;
     private String url;
     private String selected;
     private String selectedClass;
+    private ListAdapter adapter;
     private HashMap<String, String> contact2 = new HashMap<String, String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +66,7 @@ public class Parent_homwork extends AppCompatActivity {
         password = intent.getStringExtra("password");
         selected = intent.getStringExtra("selected");
         selectedClass = intent.getStringExtra("selectedClass");
-        url = "https://lenchan139.org/myWorks/fyp/android/homeworkList.php?"+"username="+username+"&password="+password;
-        TextView test = (TextView) findViewById(R.id.test);
+        url = "https://lenchan139.org/myWorks/fyp/android/homeworkList.php?" + "username=" + username + "&password=" + password;
         contactList = new ArrayList<>();
         lv = (ListView) findViewById(R.id.hwList);
         new GetContacts().execute();
@@ -180,13 +179,12 @@ public class Parent_homwork extends AppCompatActivity {
             /**
              * Updating parsed JSON data into ListView
              * */
-            ListAdapter adapter = new SimpleAdapter(
+            adapter = new SimpleAdapter(
                     Parent_homwork.this, contactList,
                     R.layout.hwlist_item, new String[]{"Class","Subject",
                     "Title","Description","postDate","deadLine"}, new int[]{R.id.Class,
                     R.id.Subject,R.id.Title,R.id.Description, R.id.postDate, R.id.deadLine});
-
-            lv.setAdapter(adapter);
+                lv.setAdapter(adapter);
         }
 
     }
