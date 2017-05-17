@@ -114,8 +114,8 @@ public class Parent_contact extends AppCompatActivity {
                         HashMap<String, String> contact = new HashMap<>();
 
                         // adding each child node to HashMap key => value
-                        contact.put("staff_name", name);
-                        contact.put("teaching_class", tclass);
+                        //contact.put("staff_name", name);
+                        //contact.put("teaching_class", tclass);
                         contact.put("user_id", user_id);
                         contact.put("mail", mail);
 
@@ -164,8 +164,10 @@ public class Parent_contact extends AppCompatActivity {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     Parent_contact.this, contactList,
-                    R.layout.stafflist_item, new String[]{"user_id","mail", "staff_name", "teaching_class"}, new int[]{R.id.userId
-                    ,R.id.mail, R.id.staffName, R.id.tClass});
+                    //R.layout.stafflist_item, new String[]{"user_id","mail", "staff_name", "teaching_class"}, new int[]{R.id.userId
+                    //,R.id.mail, R.id.staffName, R.id.tClass});
+            R.layout.stafflist_item, new String[]{"user_id","mail"}, new int[]{R.id.userId
+                    ,R.id.mail});
 
             lv.setAdapter(adapter);
         }
