@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -16,28 +18,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import android.app.ProgressDialog;
+
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.Response;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Parent_handbook extends AppCompatActivity {
 
@@ -53,17 +35,34 @@ public class Parent_handbook extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_handbook);
+        final Button btntTable = (Button) findViewById(R.id.btntTable);
+        final Button btnSche = (Button) findViewById(R.id.btnSche);
+        btnSche.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Parent_handbook.this, Schedule.class);
+                Parent_handbook.this.startActivity(intent);
+            }
+        });
+        btntTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Parent_handbook.this, Timetable.class);
+                Parent_handbook.this.startActivity(intent);
+            }
+        });
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
-        password= intent.getStringExtra("password");
-        url = "https://lenchan139.org/myWorks/fyp/android/ruleList.php?"+"username="+username+"&password="+password;
+        password = intent.getStringExtra("password");
+        url = "https://lenchan139.org/myWorks/fyp/android/ruleList.php?" + "username=" + username + "&password=" + password;
 
         contactList = new ArrayList<>();
 
         lv = (ListView) findViewById(R.id.ruleList);
         new GetContacts().execute();
     }
-
     /**
      * Async task class to get json by making HTTP call
      */

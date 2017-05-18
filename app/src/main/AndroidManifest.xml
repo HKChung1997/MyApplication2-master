@@ -22,7 +22,8 @@
         <activity
             android:name=".Home"
             android:label="Staff Home Page" />
-        <activity android:name=".notice_item"
+        <activity
+            android:name=".notice_item"
             android:label="Notice" />
         <activity
             android:name=".QR_Code"
@@ -74,8 +75,14 @@
         <activity
             android:name=".Teacher_hw_selected_chk"
             android:label="Homework Check" />
-        <activity android:name=".Teacher_hw_stud_select"
-        android:label="Homework"/>
+        <activity
+            android:name=".Teacher_hw_stud_select"
+            android:label="Homework" />
+        <activity android:name=".Schedule"
+            android:label="Schedule">
+        </activity>
+        <activity android:name=".Timetable"
+            android:label="Timetable"></activity>
     </application>
 
 </manifest>

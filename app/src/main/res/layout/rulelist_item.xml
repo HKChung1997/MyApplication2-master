@@ -7,14 +7,12 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent">
     <TextView
-        android:layout_weight="20"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Rule "
         android:textStyle="bold"/>
     <TextView
-        android:layout_weight="2"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/ruleId"
         android:textStyle="bold"/>
